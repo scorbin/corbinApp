@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>SlickGrid example 1: Basic grid</title>
+  <link rel="stylesheet" href="../slick.grid.css" type="text/css"/>
+  <link rel="stylesheet" href="../css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="examples.css" type="text/css"/>
+    <style>
+
+        .btn {
+            background: #c8e7eb;
+            background-image: -webkit-linear-gradient(top, #c8e7eb, #2980b9);
+            background-image: -moz-linear-gradient(top, #c8e7eb, #2980b9);
+            background-image: -ms-linear-gradient(top, #c8e7eb, #2980b9);
+            background-image: -o-linear-gradient(top, #c8e7eb, #2980b9);
+            background-image: linear-gradient(to bottom, #c8e7eb, #2980b9);
+            -webkit-border-radius: 10;
+            -moz-border-radius: 10;
+            border-radius: 10px;
+            font-family: Arial;
+            color: #ffffff;
+
+            padding: 5px 10px 5px 10px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #3cb0fd;
+            background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
+        }
+
+        .btnSmall{
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+        .btnLarge{
+            font-size: 20px;
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div >
+    <a class="btn btnLarge" href="#">Click Me</a>
+</div>
+<br>
+<div>
+    <a class="btn btnSmall" href="#">Click Me</a>
+</div>
+
+<table width="100%">
+  <tr>
+    <td valign="top" width="50%">
+      <div id="myGrid" style="width:300px;height:300px;"></div>
+    </td>
+    <td valign="top">
+      <h2>Demonstrates:</h2>
+      <ul>
+        <li>basic grid with minimal configuration</li>
+      </ul>
+        <h2>View Source:</h2>
+        <ul>
+            <li><A href="https://github.com/mleibman/SlickGrid/blob/gh-pages/examples/example1-simple.html" target="_sourcewindow"> View the source for this example on Github</a></li>
+        </ul>
+    </td>
+  </tr>
+</table>
+
+<script src="../lib/jquery-1.7.min.js"></script>
+<script src="../lib/jquery.event.drag-2.2.js"></script>
+
+<script src="../slick.core.js"></script>
+<script src="../slick.grid.js"></script>
+
+<script>
+  var grid;
+  var columns = [
+    {id: "title", name: "Title", field: "title"},
+    {id: "duration", name: "Duration", field: "duration"},
+    {id: "%", name: "% Complete", field: "percentComplete"},
+    {id: "start", name: "Start", field: "start"},
+    {id: "finish", name: "Finish", field: "finish"},
+    {id: "effort-driven", name: "Effort Driven", field: "effortDriven"}
+  ];
+
+  var options = {
+    enableCellNavigation: true,
+    enableColumnReorder: false,
+      showHeaderRow:true
+  };
+
+  $(function () {
+    var data = [];
+    for (var i = 0; i < 500; i++) {
+      data[i] = {
+        title: "Task " + i,
+        duration: "5 days",
+        percentComplete: Math.round(Math.random() * 100),
+        start: "01/01/2014",
+        finish: "01/05/2014",
+        effortDriven: (i % 5 == 0)
+      };
+    }
+
+    grid = new Slick.Grid("#myGrid", data, columns, options);
+  })
+</script>
+</body>
+</html>
