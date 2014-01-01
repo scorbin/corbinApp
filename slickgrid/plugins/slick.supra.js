@@ -44,13 +44,10 @@
         }
 
         function handleGridSort(e, args) {
-
                 sortcol = args.sortCol.field;  // Maybe args.sortcol.field ???
                 dataView.sort(comparer, args.sortAsc);
 
         }
-
-
         // Public API
         $.extend(this, {
             "init": init,
